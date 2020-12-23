@@ -16,13 +16,12 @@ namespace amazen_server.Controllers
   public class ProfileController : ControllerBase
   {
     private readonly ProfilesService _ps;
-    // private readonly BlogsService _bs;
+    private readonly ProductsService _prs;
 
-    public ProfileController(ProfilesService ps)
-    // or this in there as well BlogsService bs
+    public ProfileController(ProfilesService ps, ProductsService prs)
     {
       _ps = ps;
-      // _bs = bs;
+      _prs = prs;
     }
 
     [HttpGet]
@@ -40,19 +39,19 @@ namespace amazen_server.Controllers
       }
     }
 
-    // [HttpGet("{id}/blogs")]
-    // public async Task<ActionResult<Profile>> GetBlogsByProfile(string id)
-    // {
-    //   try
-    //   {
-    //     Profile userInfo = await HttpContext.GetUserInfoAsync<Profile>();
-    //     return Ok(_bs.GetBlogsByProfile(id, userInfo?.Id));
-    //   }
-    //   catch (System.Exception e)
-    //   {
-    //     return BadRequest(e.Message);
-    //   }
+    [HttpGet("{id}/blogs")]
+    public async Task<ActionResult<Profile>> GetProductsByProfile(string id)
+    {
+      try
+      {
+        Profile userInfo = await HttpContext.GetUserInfoAsync<Profile>();
+        return Ok(_prs.GetProductsByProfile(id, userInfo?.Id));
+      }
+      catch (System.Exception e)
+      {
+        return BadRequest(e.Message);
+      }
 
-    // }
+    }
   }
 }

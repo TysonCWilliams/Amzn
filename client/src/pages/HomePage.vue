@@ -4,22 +4,36 @@
     <h1 class="my-5 bg-dark text-light p-3 rounded d-flex align-items-center">
       <span class="mx-2 text-white">Vue 3 Starter</span>
     </h1>
+    <!-- products -->
+    <product v-for="product in products" :product-prop="product" :key="product.id" />
   </div>
 </template>
 
 <script>
-export default {
-  name: 'Home'
-}
+  import { computed, onMounted } from 'vue'
+  import { productsService } from '../services/ProductsService'
+  import { AppState } from '../AppState'
+  export default {
+    name: 'Home',
+    setup() {
+      onMounted(() => {
+        productsService.getPublicProducts()
+      })
+      return {
+        products: computed(() => AppState.products)
+      }
+    }
+  }
 </script>
 
 <style scoped lang="scss">
-.home{
-  text-align: center;
-  user-select: none;
-  > img{
+  .home {
+    text-align: center;
+    user-select: none;
+  }
+
+  img {
     height: 200px;
     width: 200px;
   }
-}
 </style>
