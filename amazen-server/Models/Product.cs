@@ -11,8 +11,8 @@ namespace amazen_server.Models
     public Profile Creator { get; set; }
   }
 
-  // public class CompanyBlogViewModel : Blog
-  // {
-  //   public int CompanyBlogId { get; set; }
-  // }
+  public class WishlistProductViewModel : Product
+  {
+    public int WishlistProductId { get; set; }
+  }
 }

@@ -8,13 +8,17 @@ USE amazen08;
 --     PRIMARY KEY (id)
 -- )
 
-CREATE TABLE products (
-  id INT NOT NULL AUTO_INCREMENT,
-  title VARCHAR(255) NOT NULL,
-  body VARCHAR(500) NOT NULL,
-  creatorId VARCHAR(255) NOT NULL,
-  PRIMARY KEY (id),
-  FOREIGN KEY (creatorId)
-      REFERENCES profiles(id)
-      ON DELETE CASCADE
-)
+-- CREATE TABLE products (
+--   id INT NOT NULL AUTO_INCREMENT,
+--   title VARCHAR(255) NOT NULL,
+--   body VARCHAR(500) NOT NULL,
+--   picture VARCHAR(255) NOT NULL,
+--   isPublished TINYINT NOT NULL,
+--   creatorId VARCHAR(255) NOT NULL,
+--   PRIMARY KEY (id),
+--   FOREIGN KEY (creatorId)
+--       REFERENCES profiles(id)
+--       ON DELETE CASCADE
+-- )
+
+

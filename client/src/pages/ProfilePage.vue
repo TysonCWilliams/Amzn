@@ -14,18 +14,31 @@
                placeholder="Enter Title..."
                v-model="state.newProduct.title"
         >
+        <div class="form-group">
+          <label for="product-picture">Add a picture</label>
+          <input type="image"
+                 class="form-control"
+                 src=""
+                 alt="Submit"
+                 style="float:right"
+                 height="48"
+                 width="48"
+                 id="product-picture"
+                 v-model="state.newProduct.picture"
+          >
+        </div>
+        <div class="form-group">
+          <label for="description">Description</label>
+          <input type="text" class="form-control" id="description" placeholder="Enter description" v-model="state.newProduct.body">
+        </div>
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input" id="isPublished" v-model="state.newProduct.isPublished">
+          <label class="form-check-label" for="isPublished">Published?</label>
+        </div>
+        <button type="submit" class="btn btn-success">
+          Submit
+        </button>
       </div>
-      <div class="form-group">
-        <label for="description">Description</label>
-        <input type="text" class="form-control" id="description" placeholder="Enter description" v-model="state.newProduct.body">
-      </div>
-      <div class="form-check">
-        <input type="checkbox" class="form-check-input" id="isPublished" v-model="state.newProduct.isPublished">
-        <label class="form-check-label" for="isPublished">Published?</label>
-      </div>
-      <button type="submit" class="btn btn-success">
-        Submit
-      </button>
     </form>
     <product v-for="product in products" :product-prop="product" :key="product.id" />
   </div>

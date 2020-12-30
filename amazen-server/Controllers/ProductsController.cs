@@ -15,11 +15,11 @@ namespace amazen_server.Controllers
   [Route("api/[controller]")]
   public class ProductsController : ControllerBase
   {
-    private readonly ProductsService _prs;
+    private readonly ProductsService _ps;
 
-    public ProductsController(ProductsService prs)
+    public ProductsController(ProductsService ps)
     {
-      _prs = prs;
+      _ps = ps;
     }
 
     [HttpPost]
@@ -30,7 +30,7 @@ namespace amazen_server.Controllers
       {
         Profile userInfo = await HttpContext.GetUserInfoAsync<Profile>();
         newProduct.CreatorId = userInfo.Id;
-        Product created = _prs.Create(newProduct);
+        Product created = _ps.Create(newProduct);
         created.Creator = userInfo;
         return Ok(created);
       }
@@ -45,7 +45,7 @@ namespace amazen_server.Controllers
     {
       try
       {
-        return Ok(_prs.Get());
+        return Ok(_ps.Get());
       }
       catch (System.Exception e)
       {
@@ -62,7 +62,7 @@ namespace amazen_server.Controllers
         Profile userInfo = await HttpContext.GetUserInfoAsync<Profile>();
         //helpful to check in service if creator is whoever is logged in
         editData.Id = id;
-        return Ok(_prs.Edit(editData, userInfo.Id));
+        return Ok(_ps.Edit(editData, userInfo.Id));
       }
       catch (System.Exception e)
       {

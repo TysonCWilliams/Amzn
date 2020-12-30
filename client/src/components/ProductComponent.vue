@@ -1,5 +1,5 @@
 <template>
-  <div class="productComponent card p-2 shadow-lg border border-primary rounded">
+  <div class="product card p-2 shadow-lg border border-primary rounded">
     <h1>
       {{ product.title }}
     </h1>
@@ -9,7 +9,7 @@
 <script>
   import { computed } from 'vue'
   export default {
-    name: 'ProductComponent',
+    name: 'Product',
     props: ['productProp'],
     setup(props) {
       return {
